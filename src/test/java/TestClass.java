@@ -2,11 +2,6 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.concurrent.TimeUnit;
 
 public class TestClass {
 
@@ -16,11 +11,20 @@ public class TestClass {
     @Test
     public void testBBCPage() {
         driver.get("https://bbc.com");
-        driver.findElement(By.xpath("//*[@id='orb-search-q']")).sendKeys("people");
-        driver.findElement(By.xpath("//*[@id='orb-search-button']")).click();
-        driver.findElement(By.xpath("//*[@data-result-number='1']//h1//a")).click();
-
+        WebElement searchField = driver.findElement(By.id("orb-search-q"));
+        System.out.println(searchField.isDisplayed());
+        searchField.sendKeys("people");
+        WebElement searchButton = driver.findElement(By.xpath("//*[@id='orb-search-button']"));
+        System.out.println(searchButton.isEnabled());
+        searchButton.click();
+        driver.findElement(By.xpath("//*[@data-result-number='1']//h1//a"));
+        //driver.close();
     }
 
 
 }
+
+
+
+
+

@@ -27,7 +27,7 @@ public class WebDriverSetting {
 
     public void close() {
         instance.quit();
-
+instance=null;
     }
 
 
